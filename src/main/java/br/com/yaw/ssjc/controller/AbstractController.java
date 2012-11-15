@@ -140,10 +140,10 @@ public abstract class AbstractController implements ActionListener, WindowListen
 	/**
 	 * Método utilizado para liberar recursos carregados pela Controller.
 	 */
-	protected void dispose() {}
+	protected void cleanUp() {}
 	
 	public void windowClosing(WindowEvent windowEvent) { 
-		dispose(); 
+		cleanUp(); 
 	}
 	
     public void windowOpened(WindowEvent windowEvent) {}

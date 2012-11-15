@@ -27,7 +27,7 @@ public class IncluirMercadoriaController extends AbstractController {
 		registerAction(frame.getCancelarButton(), new AbstractAction() {
 			@Override
 			public void action() {
-				dispose();
+				cleanUp();
 			}
 		});
 		
@@ -43,7 +43,7 @@ public class IncluirMercadoriaController extends AbstractController {
 			
 			@Override
 			public void posAction() {
-				dispose();
+				cleanUp();
 				fireEvent(new IncluirMercadoriaEvent(m));
 			}
 			
@@ -65,8 +65,8 @@ public class IncluirMercadoriaController extends AbstractController {
 	}
 	
 	@Override
-	protected void dispose() {
-		super.dispose();
+	protected void cleanUp() {
+		super.cleanUp();
 		frame.setVisible(false);
 		frame.resetForm();
 	}

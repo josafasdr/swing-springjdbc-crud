@@ -39,7 +39,7 @@ public class BuscarMercadoriaController extends AbstractController {
 			
 			@Override
 			public void posAction() {
-				dispose();
+				cleanUp();
 				if (list != null && !list.isEmpty()) {
 					fireEvent(new BuscarMercadoriaEvent(list));
 				}
@@ -57,8 +57,8 @@ public class BuscarMercadoriaController extends AbstractController {
 	}
 
 	@Override
-	protected void dispose() {
-		super.dispose();
+	protected void cleanUp() {
+		super.cleanUp();
 		frame.setVisible(false);
 		frame.resetForm();
 	}
