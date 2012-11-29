@@ -9,13 +9,14 @@
 	</information>
 	
 	<security>
+		<all-permissions />
 	</security>
 	
 	<resources>
 		<j2se version="1.6.0+" initial-heap-size="32m" max-heap-size="128m"/>
 		
-		<jar href="lib/hsqldb-2.2.8.jar" download="eager" />
-		<jar href="lib/log4j-1.2.16.jar" download="eager" />
+		<jar href="lib/hsqldb-2.2.8-s.jar" download="eager" />
+		<jar href="lib/log4j-1.2.16-s.jar" download="eager" />
 		<jar href="lib/commons-dbcp-1.4.jar" download="eager" />
 		<jar href="lib/commons-pool-1.5.4.jar" download="eager" />
 		<jar href="lib/spring-beans-3.1.2.RELEASE.jar" download="eager" />
