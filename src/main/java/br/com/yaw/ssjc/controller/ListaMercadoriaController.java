@@ -17,6 +17,7 @@ import br.com.yaw.ssjc.event.DeletarMercadoriaEvent;
 import br.com.yaw.ssjc.event.IncluirMercadoriaEvent;
 import br.com.yaw.ssjc.model.Mercadoria;
 import br.com.yaw.ssjc.ui.ListaMercadoriasFrame;
+import br.com.yaw.ssjc.ui.SobreFrame;
 
 /**
  * Define a <code>Controller</code> principal do sistema, responsável por gerir a tela com a lista de <code>Mercadoria</code>.
@@ -28,6 +29,7 @@ import br.com.yaw.ssjc.ui.ListaMercadoriasFrame;
 public class ListaMercadoriaController extends AbstractController {
 
 	private ListaMercadoriasFrame frame;
+	private SobreFrame sobreFrame;
 	
 	private IncluirMercadoriaController incluirController;
 	private BuscarMercadoriaController buscarController;
@@ -38,6 +40,8 @@ public class ListaMercadoriaController extends AbstractController {
 		this.context = context;
 		this.frame = new ListaMercadoriasFrame();
 		this.frame.addWindowListener(this);
+		this.sobreFrame = new SobreFrame();
+
 		this.incluirController = new IncluirMercadoriaController(this);
 		this.buscarController = new BuscarMercadoriaController(this);
 		
@@ -75,6 +79,13 @@ public class ListaMercadoriaController extends AbstractController {
 			@Override
 			public void posAction() {
 				fireEvent(new DeletarMercadoriaEvent(m));
+			}
+		});
+		
+		registerAction(frame.getMenuSobre(), new AbstractAction() {
+			@Override
+			protected void action() {
+				sobreFrame.setVisible(true);
 			}
 		});
 		
