@@ -13,6 +13,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>3.1.2.RELEASE</spring.version>
+		<project.title>Demo Swing c/ Spring JDBC</project.title>
+		<user.name>YaW Tecnologia</user.name>
+		<site>http://www.yaw.com.br</site>
 	</properties>
 
 	<dependencies>
@@ -81,7 +84,10 @@
 		</dependency>
 	</dependencies>
 	
+	<scm>
+		<connection>scm:git:https://github.com/yaw/swing-springjdbc-crud.git</connection>
+	</scm>
 	<build>
-		<finalName>${artifactId}</finalName>
+		<finalName>${project.artifactId}</finalName>
 	</build>
 </project>
