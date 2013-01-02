@@ -1,7 +1,5 @@
 package br.com.yaw.ssjc.controller;
 
-import javax.swing.JFrame;
-
 import br.com.yaw.ssjc.action.AbstractAction;
 import br.com.yaw.ssjc.dao.MercadoriaDAO;
 import br.com.yaw.ssjc.event.IncluirMercadoriaEvent;
@@ -50,17 +48,12 @@ public class IncluirMercadoriaController extends AbstractController {
 		});
 	}
 	
-	@Override
-	protected JFrame getFrame() {
-		return frame;
-	}
-	
 	public void show() {
 		frame.setVisible(true);
 	}
 	
 	public void show(Mercadoria m) {
-		((IncluirMercadoriaFrame) getFrame()).setMercadoria(m);
+		frame.setMercadoria(m);
 		show();
 	}
 	

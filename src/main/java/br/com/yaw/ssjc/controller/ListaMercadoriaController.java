@@ -3,7 +3,6 @@ package br.com.yaw.ssjc.controller;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import org.springframework.context.ApplicationContext;
@@ -143,11 +142,6 @@ public class ListaMercadoriaController extends AbstractController {
 		frame.setVisible(true);
 		getMercadoriaDAO().init();
 		refreshTable();
-	}
-	
-	@Override
-	protected JFrame getFrame() {
-		return frame;
 	}
 	
 	private void refreshTable() {

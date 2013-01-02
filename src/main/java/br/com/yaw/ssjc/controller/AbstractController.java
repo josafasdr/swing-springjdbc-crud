@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.swing.AbstractButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import org.apache.log4j.Logger;
@@ -130,7 +129,7 @@ public abstract class AbstractController implements ActionListener, WindowListen
 	 */
 	protected void handlerException(Exception ex) {
 		log.error(ex);
-		JOptionPane.showMessageDialog(getFrame(), ex.getMessage(), "Erro - "+getFrame().getTitle(), JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
 	}
 	
 	public AbstractController getParentController() {
@@ -156,6 +155,6 @@ public abstract class AbstractController implements ActionListener, WindowListen
     /**
      * @return A referência para o frame principal.
      */
-    protected abstract JFrame getFrame();
+    //protected abstract JFrame getFrame();
     
 }
