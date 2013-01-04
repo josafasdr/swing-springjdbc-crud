@@ -4,18 +4,38 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Locale;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
- * Classe de modelo que representa uma mercadoria. A mercadoria eh um objeto persistido no banco de dados, por isso utilizamos o nome entidade.
- * As funcionalidades desse sistema demonstracao sao concentradas no cadastro (CRUD) de mercadorias.  
+ * Classe de modelo que representa uma mercadoria.
+ * 
+ * <p>A <code>mercadoria</code> é um objeto persistido no banco de dados, por isso a classificamos como <strong>Entidade</strong>.</p>
+ * 
+ * <p>As funcionalidades desse sistema demonstração são concentradas no cadastro (CRUD) de mercadorias.</p>
+ * 
+ * <p>
+ *  Outra característica dessa classe, é o uso de anotações do Bean Validations para validar o estado (dados) da <code>Mercadoria</code>.
+ *  Bean Validations (JSR 303) é uma especificação Java para habilitar a validação de dados via o uso de anotações. O principal provider
+ *  dessa API é o <code>Hibernate Validator</code>.
+ * </p>
  * 
  * @author YaW Tecnologia
  */
 public class Mercadoria {
 
 	private Integer id;
+	
+	@NotNull @Size(min=5, max=200)
 	private String nome;
+	
 	private String descricao;
+	
+	@NotNull @Min(value=1)
 	private Integer quantidade;
+	
+	@NotNull @Min(value=1)
 	private Double preco;
 	
 	private static final NumberFormat numberFmt = NumberFormat.getNumberInstance(new Locale("pt","BR"));

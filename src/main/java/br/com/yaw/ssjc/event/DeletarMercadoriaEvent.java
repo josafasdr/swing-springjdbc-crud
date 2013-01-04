@@ -2,9 +2,10 @@ package br.com.yaw.ssjc.event;
 
 import br.com.yaw.ssjc.model.Mercadoria;
 
-
 /**
- * Define um evento para a exclusão de uma <code>Mercadoria</code>.
+ * Evento deve ser gerado durante a exclusão de uma <code>Mercadoria</code>.
+ * 
+ * <p>Recebe a referência da <code>Mercadoria</code> que foi removida.</p>
  * 
  * @author YaW Tecnologia
  */

@@ -51,8 +51,9 @@ public class BuscarMercadoriaController extends AbstractController {
 
 	@Override
 	protected void cleanUp() {
-		super.cleanUp();
 		frame.setVisible(false);
 		frame.resetForm();
+		
+		super.cleanUp();
 	}
 }

@@ -3,7 +3,9 @@ package br.com.yaw.ssjc.event;
 import br.com.yaw.ssjc.model.Mercadoria;
 
 /**
- * Define um evento para a inclusão de uma <code>Mercadoria</code>.
+ * Evento deve ser gerado durante a inclusão de uma <code>Mercadoria</code>.
+ * 
+ * <p>Recebe a referência da <code>Mercadoria</code> que foi incluida.</p>
  * 
  * @author YaW Tecnologia
  */

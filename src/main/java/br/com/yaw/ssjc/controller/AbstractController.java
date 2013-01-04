@@ -41,8 +41,8 @@ public abstract class AbstractController implements ActionListener, WindowListen
 	private Map<String, AbstractAction> actions = 
 			new HashMap<String, AbstractAction>();
 	
-	private Map<Class<?>, List<AbstractEventListener>> eventListeners = 
-			new HashMap<Class<?>, List<AbstractEventListener>>();
+	private Map<Class<?>, List<AbstractEventListener<?>>> eventListeners = 
+			new HashMap<Class<?>, List<AbstractEventListener<?>>>();
 	
 	public AbstractController(){
 		this(null);
@@ -76,6 +76,7 @@ public abstract class AbstractController implements ActionListener, WindowListen
 	 * 
 	 * @param event tipo do evento
 	 */
+	@SuppressWarnings("unchecked")
 	protected void fireEvent(AbstractEvent<?> event) {
 		if (eventListeners.get(event.getClass()) != null) {
             for (AbstractEventListener eventListener : eventListeners.get(event.getClass())) {
@@ -93,11 +94,11 @@ public abstract class AbstractController implements ActionListener, WindowListen
 	 * @param eventClass tipo do evento
 	 * @param eventListener tratador (listener) do evento
 	 */
-	protected void registerEventListener(Class<?> eventClass, AbstractEventListener eventListener) {
+	protected void registerEventListener(Class<?> eventClass, AbstractEventListener<?> eventListener) {
         log.debug("Registrando listener: " + eventListener + " para o evento: " + eventClass.getName());
-        java.util.List<AbstractEventListener> listenersForEvent = eventListeners.get(eventClass);
+        java.util.List<AbstractEventListener<?>> listenersForEvent = eventListeners.get(eventClass);
         if (listenersForEvent == null) {
-        	listenersForEvent = new ArrayList<AbstractEventListener>(); 
+        	listenersForEvent = new ArrayList<AbstractEventListener<?>>(); 
         }
         listenersForEvent.add(eventListener);
         eventListeners.put(eventClass, listenersForEvent);
@@ -151,10 +152,5 @@ public abstract class AbstractController implements ActionListener, WindowListen
     public void windowDeiconified(WindowEvent windowEvent) {}
     public void windowActivated(WindowEvent windowEvent) {}
     public void windowDeactivated(WindowEvent windowEvent) {}
-    
-    /**
-     * @return A referência para o frame principal.
-     */
-    //protected abstract JFrame getFrame();
     
 }
