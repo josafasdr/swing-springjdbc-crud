@@ -2,6 +2,7 @@ package br.com.yaw.ssjc.controller;
 
 import br.com.yaw.ssjc.action.AbstractAction;
 import br.com.yaw.ssjc.dao.MercadoriaDAO;
+import br.com.yaw.ssjc.event.DeletarMercadoriaEvent;
 import br.com.yaw.ssjc.event.IncluirMercadoriaEvent;
 import br.com.yaw.ssjc.model.Mercadoria;
 import br.com.yaw.ssjc.ui.IncluirMercadoriaFrame;
@@ -44,7 +45,26 @@ public class IncluirMercadoriaController extends AbstractController {
 				cleanUp();
 				fireEvent(new IncluirMercadoriaEvent(m));
 			}
+		});
+		
+		registerAction(frame.getExcluirButton(), new AbstractAction() {
+			Mercadoria m;
+			@Override
+			public void action() {
+				Integer id = frame.getMercadoriaId();
+				if (id != null) {
+					m = parent.getMercadoriaDAO().findById(id);
+					if (m != null) {
+						parent.getMercadoriaDAO().remove(m);
+					}
+				}
+			}
 			
+			@Override
+			public void posAction() {
+				cleanUp();
+				fireEvent(new DeletarMercadoriaEvent(m));
+			}
 		});
 	}
 	

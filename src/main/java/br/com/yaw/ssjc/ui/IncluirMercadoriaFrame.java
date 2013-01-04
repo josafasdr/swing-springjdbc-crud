@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.text.ParseException;
 
+import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -30,6 +31,7 @@ public class IncluirMercadoriaFrame extends JFrame {
 	
 	private JButton bSalvar;
 	private JButton bCancelar;
+	private JButton bExcluir;
 	
 	public IncluirMercadoriaFrame() {
 		setTitle("Incluir");
@@ -46,6 +48,23 @@ public class IncluirMercadoriaFrame extends JFrame {
 		panel.add(montaPanelEditarMercadoria(), BorderLayout.CENTER);
 		panel.add(montaPanelBotoesEditar(), BorderLayout.SOUTH);
 		add(panel);
+		
+		GroupLayout layout = new GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 	}
 	
 	private JPanel montaPanelBotoesEditar() {
@@ -60,6 +79,11 @@ public class IncluirMercadoriaFrame extends JFrame {
 		bCancelar.setActionCommand("cancelarIncluirMercadoriaAction");
 		bCancelar.setMnemonic(KeyEvent.VK_C);
 		panel.add(bCancelar);
+		
+		bExcluir = new JButton("Excluir");
+		bExcluir.setActionCommand("excluirMercadoriaAction");
+		bExcluir.setMnemonic(KeyEvent.VK_E);
+		panel.add(bExcluir);
 
 		return panel;
 	}
@@ -142,6 +166,7 @@ public class IncluirMercadoriaFrame extends JFrame {
 		tfDescricao.setText("");
 		tfPreco.setText("");
 		tfQuantidade.setValue(new Integer(1));
+		bExcluir.setVisible(false);
 	}
 	
 	private void populaTextFields(Mercadoria m){
@@ -156,11 +181,20 @@ public class IncluirMercadoriaFrame extends JFrame {
 		resetForm();
 		if (m != null) {
 			populaTextFields(m);
+			bExcluir.setVisible(true);
 		}
 	}
 	
 	public Mercadoria getMercadoria() {
 		return loadMercadoriaFromPanel();
+	}
+	
+	public Integer getMercadoriaId() {
+		try {
+			return Integer.parseInt(tfId.getText());
+		} catch (Exception nex) {
+			return null;
+		}
 	}
 	
 	public JButton getSalvarButton() {
@@ -169,5 +203,9 @@ public class IncluirMercadoriaFrame extends JFrame {
 	
 	public JButton getCancelarButton() {
 		return bCancelar;
+	}
+	
+	public JButton getExcluirButton() {
+		return bExcluir;
 	}
 }

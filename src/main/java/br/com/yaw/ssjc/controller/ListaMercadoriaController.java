@@ -65,22 +65,6 @@ public class ListaMercadoriaController extends AbstractController {
 			}
 		});
 		
-		registerAction(frame.getRemoveButton(), new AbstractAction() {
-			Mercadoria m;
-			@Override
-			public void action() {
-				m = frame.getSelectedMercadoria();
-				if (m != null) {
-					getMercadoriaDAO().remove(m);
-				}
-			}
-			
-			@Override
-			public void posAction() {
-				fireEvent(new DeletarMercadoriaEvent(m));
-			}
-		});
-		
 		registerAction(frame.getMenuSobre(), new AbstractAction() {
 			@Override
 			protected void action() {
