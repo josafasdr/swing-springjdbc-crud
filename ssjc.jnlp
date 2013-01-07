@@ -13,7 +13,7 @@
 	</security>
 	
 	<resources>
-		<j2se version="1.6.0+" initial-heap-size="32m" max-heap-size="128m"/>
+		<j2se version="1.6.0+" initial-heap-size="32m" max-heap-size="256m"/>
 		
 		<jar href="lib/hsqldb-2.2.8-s.jar" download="eager" />
 		<jar href="lib/log4j-1.2.16-s.jar" download="eager" />
@@ -29,6 +29,8 @@
 		<jar href="lib/spring-expression-3.1.2.RELEASE.jar" download="eager" />
 		<jar href="lib/spring-tx-3.1.2.RELEASE.jar" download="eager" />
 		<jar href="lib/spring-jdbc-3.1.2.RELEASE.jar" download="eager" />
+		<jar href="lib/hibernate-validator-4.3.1.Final.jar" download="eager" />
+		<jar href="lib/validation-api-1.0.0.GA.jar" download="eager" />
 
 		<jar href="lib/swing-springjdbc-crud.jar" download="eager" />
 	</resources>
