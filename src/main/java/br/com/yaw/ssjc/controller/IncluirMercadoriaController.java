@@ -56,7 +56,7 @@ public class IncluirMercadoriaController extends AbstractController {
 					
 					@Override
 					public void action() {
-						Mercadoria m = frame.getMercadoria();
+						m = frame.getMercadoria();
 						MercadoriaDAO dao =  parent.getMercadoriaDAO();
 						dao.save(m);
 					}
@@ -65,12 +65,14 @@ public class IncluirMercadoriaController extends AbstractController {
 					public void posAction() {
 						cleanUp();
 						fireEvent(new IncluirMercadoriaEvent(m));
+						m = null;
 					}
 				}));
 		
 		
 		registerAction(frame.getExcluirButton(), new AbstractAction() {
 			private Mercadoria m;
+			
 			@Override
 			public void action() {
 				Integer id = frame.getMercadoriaId();
@@ -86,23 +88,24 @@ public class IncluirMercadoriaController extends AbstractController {
 			public void posAction() {
 				cleanUp();
 				fireEvent(new DeletarMercadoriaEvent(m));
+				m = null;
 			}
 		});
 	}
 	
 	public void show() {
+		frame.setTitle("Incluir Mercadoria");
 		frame.setVisible(true);
 	}
 	
 	public void show(Mercadoria m) {
 		frame.setMercadoria(m);
 		frame.setTitle("Editar Mercadoria");
-		show();
+		frame.setVisible(true);
 	}
 	
 	@Override
 	protected void cleanUp() {
-		frame.setTitle("Incluir Mercadoria");
 		frame.setVisible(false);
 		frame.resetForm();
 		

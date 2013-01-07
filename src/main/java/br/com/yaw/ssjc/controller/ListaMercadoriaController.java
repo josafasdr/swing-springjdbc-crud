@@ -1,8 +1,11 @@
 package br.com.yaw.ssjc.controller;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
+import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 
 import org.springframework.context.ApplicationContext;
@@ -65,12 +68,14 @@ public class ListaMercadoriaController extends AbstractController {
 			}
 		});
 		
-		registerAction(frame.getMenuSobre(), new AbstractAction() {
+		AbstractAction sobreAction = new AbstractAction() {
 			@Override
 			protected void action() {
 				sobreFrame.setVisible(true);
 			}
-		});
+		};
+		registerAction(frame.getMenuSobre(), sobreAction);
+		frame.addActionF1(sobreAction);
 		
 		frame.getTable().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent event) {
@@ -117,7 +122,10 @@ public class ListaMercadoriaController extends AbstractController {
 			public void handleEvent(final BuscarMercadoriaEvent event) {
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
-						frame.refreshTable(event.getTarget());
+						List<Mercadoria> list = event.getTarget();
+						if (list != null) {
+							frame.refreshTable(event.getTarget());
+						}
 					}
 				});
 			}

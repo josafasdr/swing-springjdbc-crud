@@ -75,7 +75,7 @@ public class IncluirMercadoriaFrame extends JFrame {
 
 		bSalvar = new JButton("Salvar");
 		bSalvar.setActionCommand("salvarIncluirMercadoriaAction");
-		bSalvar.setMnemonic(KeyEvent.VK_M);
+		bSalvar.setMnemonic(KeyEvent.VK_S);
 		panel.add(bSalvar);
 
 		bCancelar = new JButton("Cancelar");

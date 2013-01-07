@@ -38,9 +38,8 @@ public class BuscarMercadoriaController extends AbstractController {
 			@Override
 			public void posAction() {
 				cleanUp();
-				if (list != null) {
-					fireEvent(new BuscarMercadoriaEvent(list));
-				}
+				fireEvent(new BuscarMercadoriaEvent(list));
+				list = null;
 			}
 		});
 	}
